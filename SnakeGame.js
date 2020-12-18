@@ -36,12 +36,21 @@ let game = {
                 snake.count++;
                 snake.tailPos.push({x: food.x, y: food.y});
                 food.position();
-                console.log(snake.tailPos);
+
             }
+            // if(snake.bite()){
+            //     this.gameOver();
+            //     console.log("over");
+            // }
+
         }, this.speed);
 
 
-    }
+    }//, 
+    // gameOver: () => {
+    //     clearInterval(this.timer);
+    //     this.time = null;
+    // }
 }
 
 game.play();
@@ -57,9 +66,24 @@ function Snake(){
     this.move = function(){
         ctx.fillStyle = 'green';
         ctx.fillRect(this.x, this.y, game.scale, game.scale);
+        for (let i = 0; i < this.tailPos.length; i++) {
+          ctx.fillStyle = "darkgreen";
+          ctx.fillRect(
+            this.tailPos[i].x,
+            this.tailPos[i].y,
+            game.scale,
+            game.scale
+          );
+        }
     },
 
     this.position = function(){
+        for (let i = 0; i < this.tailPos.length - 1; i++) {
+          this.tailPos[i] = this.tailPos[i + 1];
+        }
+
+        this.tailPos[this.count - 1] = { x: this.x, y: this.y };
+
         this.y += this.speedY;
         this.x += this.speedX;
         if (this.y == canvas.height){
@@ -96,12 +120,19 @@ function Snake(){
                 this.speedX =game.scale;
                 break;
         }
-    }
+    },
     this.eating = function(x ,y){
         if(this.x == x && this.y == y) {
             return true;
         }
-    }
+    }//,
+    /*this.bite = function(){
+        this.tailPos.forEach((value) =>{
+            if(value.x == this.x && value.y == this.y){
+                return true;
+            }
+        });
+    }*/
 }
 
 function Food() {
