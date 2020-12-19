@@ -1,3 +1,7 @@
+// const scale = document.getElementById("scale");
+// const speed = document.getElementById("speed");
+
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 //platno
@@ -17,6 +21,9 @@ let game = {
   speed: 250,
 
   play: function () {
+    // this.scale = scale.value;
+    // this.speed = speed.value;
+
     this.columns = canvas.width / this.scale;
     this.rows = canvas.height / this.scale;
 
@@ -30,15 +37,10 @@ let game = {
     food.position();
 
     this.timer = setInterval(() => {
-      ctx.fillStyle = "#4c4c4c";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      food.draw();
-      snake.position();
+      this.draw(snake, food);
       if (snake.bite()) {
         this.gameOver();
-        console.log("over");
       }
-      snake.move();
       if (snake.eating(food.x, food.y)) {
         snake.count++;
         food.position();
@@ -48,5 +50,12 @@ let game = {
   gameOver: function () {
     clearInterval(this.timer);
     this.timer = null;
+  },
+  draw: function (snake, food) {
+    ctx.fillStyle = "#4c4c4c";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    food.draw();
+    snake.position();
+    snake.move();
   },
 };
