@@ -44,7 +44,7 @@ let game = {
         this.gameOver();
       }
       if (snake.eating(food.x, food.y)) {
-        ate++;
+        this.ate++;
         snake.count++;
         food.position();
       }
