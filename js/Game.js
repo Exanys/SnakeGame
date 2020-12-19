@@ -63,7 +63,7 @@ let game = {
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
     ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
-    Player.scores.push(this.score * this.ate);
+    player.scores.push(this.score * this.ate);
 
   },
 
