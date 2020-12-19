@@ -1,3 +1,13 @@
 #NewGame{
     width: 100%;
 }
+#start{
+    width: 200px;
+    margin: auto;
+    margin-top: 20px;
+}
+#EnterName {
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+}

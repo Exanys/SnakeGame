@@ -1,6 +1,7 @@
 function Snake() {
   (this.x = 0),
     (this.y = 0),
+    (this.type = 1),
     (this.speedX = game.scale),
     (this.speedY = 0),
     (this.count = 0),
@@ -46,24 +47,28 @@ function Snake() {
           if (this.speedY != game.scale && this.speedX != 0) {
             this.speedY = -game.scale;
             this.speedX = 0;
+            this.type = 4;
           }
           break;
         case "ArrowDown":
           if (this.speedY != -game.scale && this.speedX != 0) {
             this.speedY = game.scale;
             this.speedX = 0;
+            this.type = 3;
           }
           break;
         case "ArrowLeft":
           if (this.speedY != 0 && this.speedX != game.scale) {
             this.speedY = 0;
             this.speedX = -game.scale;
+            this.type = 2;
           }
           break;
         case "ArrowRight":
           if (this.speedY != 0 && this.speedX != -game.scale) {
             this.speedY = 0;
             this.speedX = game.scale;
+            this.type = 1;
           }
           break;
       }
@@ -80,4 +85,185 @@ function Snake() {
         }
       }
     });
+    this.eyes = function () {
+      let del = game.scale / 10;
+      switch (this.type) {
+        case 1:
+          ctx.beginPath();
+          ctx.strokeStyle = "white";
+          ctx.fillStyle = "white";
+          ctx.arc(
+            this.x + game.scale - del * 2,
+            this.y + del * 2,
+            del * 2,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = "black";
+          ctx.arc(
+            this.x + game.scale - del * 2,
+            this.y + del * 2,
+            del,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "white";
+          ctx.fillStyle = "white";
+          ctx.arc(
+            this.x + game.scale - del * 2,
+            this.y + game.scale - del * 2,
+            del * 2,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = "black";
+          ctx.arc(
+            this.x + game.scale - del * 2,
+            this.y + game.scale - del * 2,
+            del,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          break;
+        case 2:
+          ctx.beginPath();
+          ctx.strokeStyle = "white";
+          ctx.fillStyle = "white";
+          ctx.arc(this.x + del * 2, this.y + del * 2, del * 2, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = "black";
+          ctx.arc(this.x + del * 2, this.y + del * 2, del, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "white";
+          ctx.fillStyle = "white";
+          ctx.arc(
+            this.x + del * 2,
+            this.y + game.scale - del * 2,
+            del * 2,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = "black";
+          ctx.arc(
+            this.x + del * 2,
+            this.y + game.scale - del * 2,
+            del,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          break;
+        case 3:
+          ctx.beginPath();
+          ctx.strokeStyle = "white";
+          ctx.fillStyle = "white";
+          ctx.arc(
+            this.x + del * 2,
+            this.y + game.scale - del * 2,
+            del * 2,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = "black";
+          ctx.arc(
+            this.x + del * 2,
+            this.y + game.scale - del * 2,
+            del,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "white";
+          ctx.fillStyle = "white";
+          ctx.arc(
+            this.x + game.scale - del * 2,
+            this.y + game.scale - del * 2,
+            del * 2,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = "black";
+          ctx.arc(
+            this.x + game.scale - del * 2,
+            this.y + game.scale - del * 2,
+            del,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          break;
+        case 4:
+          ctx.beginPath();
+          ctx.strokeStyle = "white";
+          ctx.fillStyle = "white";
+          ctx.arc(this.x + del * 2, this.y + del * 2, del * 2, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = "black";
+          ctx.arc(this.x + del * 2, this.y + del * 2, del, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "white";
+          ctx.fillStyle = "white";
+          ctx.arc(
+            this.x + game.scale - del * 2,
+            this.y + del * 2,
+            del * 2,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = "black";
+          ctx.arc(
+            this.x + game.scale - del * 2,
+            this.y + del * 2,
+            del,
+            0,
+            2 * Math.PI
+          );
+          ctx.fill();
+          ctx.stroke();
+          break;
+      }
+    };
 }
