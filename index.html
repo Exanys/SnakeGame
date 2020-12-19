@@ -11,17 +11,21 @@
   </head>
   <body>
       <header class="jumbotron text-center text-white bg-dark"><h1 class="display-1">Snake Game</h1></header>
-    <main id="Show">
+    <main>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-8">
+          <div class="col-lg-8 text-center">
             <canvas id="canvas" height="600" width="600"></canvas>
           </div>
-          <div class="col-lg-2" id="results">
-            <button type="button" id="NewGame" class="btn btn-primary">New Game</button> 
-          </div>
-          <div class="col-lg-2" id="results">
-            <h2 class="display-2 text-left">Results:</h2> 
+          <div class="col-lg-4 container-fluid">
+            <div class="row">
+              <div class="col-6 text-center" id="settings">
+                <button type="button" id="NewGame" class="btn btn-primary">New Game</button> 
+              </div>
+              <div class="col-6  text-left" id="results">
+                <h2 class="display-4">Results:</h2> 
+              </div>
+            </div>
           </div>
         </div>
       </div> 
