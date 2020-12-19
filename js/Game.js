@@ -1,5 +1,5 @@
-// const scale = document.getElementById("scale");
-// const speed = document.getElementById("speed");
+const scale = document.getElementById("scale");
+const speed = document.getElementById("speed");
 
 
 const canvas = document.getElementById("canvas");
@@ -21,8 +21,7 @@ let game = {
   speed: 250,
 
   play: function () {
-    // this.scale = scale.value;
-    // this.speed = speed.value;
+    this.set();
 
     this.columns = canvas.width / this.scale;
     this.rows = canvas.height / this.scale;
@@ -57,5 +56,25 @@ let game = {
     food.draw();
     snake.position();
     snake.move();
+  },
+  set: function ()  {
+    this.scale = Number(scale.value);
+    switch(speed.value){
+      case "1":
+        this.speed = 500;
+        break;
+      case "2":
+        this.speed = 400;
+        break;
+      case "3":
+        this.speed = 300;
+        break;
+      case "4":
+        this.speed = 200;
+        break;
+      case "5":
+        this.speed = 100;
+        break;
+    }
   },
 };

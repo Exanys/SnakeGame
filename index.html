@@ -20,14 +20,15 @@
           <div class="col-lg-4 container-fluid">
             <div class="row" id="settings">
                 <form>
+                  <h2 class="display-4">Settings:</h2>
                   <div class="form-group">
-                    <label for="scale">Enter scale:</label>
-                    <input type="number" name="scale" id="scale" class="form-control" placeholder="Enter scale" >
+                    <label for="scale" class="font-weight-bold">Enter scale:</label>
+                    <input type="number" name="scale" id="scale" class="form-control"  min="10" max="50" value="25"  step="5">
                   </div>
                   <div class="form-group">
-                    <label for="speed">Enter speed:</label>
+                    <label for="speed" class="font-weight-bold">Enter speed:</label>
                     <input type="number"
-                      class="form-control" name="speed" id="speed"  placeholder="Enter speed">
+                      class="form-control" name="speed" id="speed"  min="1" max="5" value="1">
                   </div>
                   <button type="button" id="NewGame" class="btn btn-primary">New Game</button>
                 </form>

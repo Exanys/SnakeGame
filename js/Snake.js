@@ -43,23 +43,25 @@ function Snake() {
     (this.direction = function (key) {
       switch (key) {
         case "ArrowUp":
-          if(this.speedY != game.scale && this.speedX != 0){ 
+          if (this.speedY != game.scale && this.speedX != 0) {
             this.speedY = -game.scale;
-            this.speedX = 0;}
+            this.speedX = 0;
+          }
           break;
         case "ArrowDown":
-          if(this.speedY != -game.scale && this.speedX != 0){
+          if (this.speedY != -game.scale && this.speedX != 0) {
             this.speedY = game.scale;
             this.speedX = 0;
           }
           break;
         case "ArrowLeft":
-          if(this.speedY != 0 && this.speedX != game.scale){          
+          if (this.speedY != 0 && this.speedX != game.scale) {
             this.speedY = 0;
-            this.speedX = -game.scale;}
+            this.speedX = -game.scale;
+          }
           break;
         case "ArrowRight":
-          if(this.speedY != 0 && this.speedX != -game.scale){
+          if (this.speedY != 0 && this.speedX != -game.scale) {
             this.speedY = 0;
             this.speedX = game.scale;
           }
