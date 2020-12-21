@@ -1,6 +1,7 @@
 const scale = document.getElementById("scale");
 const speed = document.getElementById("speed");
 const btn = document.getElementById("NewGame");
+const results = document.getElementById("results");
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -20,8 +21,8 @@ let game = {
   rows: 0,
   timer: null,
   speed: 250,
-  ate: 0,
   score: 0,
+  currentScore: 0,
 
   play: function () {
     this.set();
@@ -40,11 +41,12 @@ let game = {
 
     this.timer = setInterval(() => {
       this.draw(snake, food);
+      this.display();
       if (snake.bite()) {
         this.gameOver();
       }
       if (snake.eating(food.x, food.y)) {
-        this.ate++;
+        this.currentScore += this.score;
         snake.count++;
         food.position();
       }
@@ -54,17 +56,18 @@ let game = {
   gameOver: function () {
     clearInterval(this.timer);
     this.timer = null;
-    scale.value = 25;
+    player.scores.push(this.currentScore);
+    this.write();
+    scale.value = 20;
     speed.value = 1;
     btn.disabled = false;
     btn.innerHTML = "Start";
-    ctx.font = "50px Trebuchet MS";
+    ctx.font = "100px Trebuchet MS";
     ctx.fillStyle = "white";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
     ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
-    player.scores.push(this.score * this.ate);
-
+    this.currentScore = 0;
   },
 
   draw: function (snake, food) {
@@ -80,7 +83,7 @@ let game = {
     let a = 0;
     let b = 0;
     this.scale = Number(scale.value);
-    switch (this.scale){
+    switch (this.scale) {
       case 10:
         a = 50;
         break;
@@ -99,28 +102,42 @@ let game = {
     }
     switch (speed.value) {
       case "1":
-        this.speed = 500;
+        this.speed = 250;
         b = 10;
         break;
       case "2":
-        this.speed = 400;
+        this.speed = 200;
         b = 20;
         break;
       case "3":
-        this.speed = 300;
+        this.speed = 150;
         b = 30;
         break;
       case "4":
-        this.speed = 200;
+        this.speed = 100;
         b = 40;
         break;
       case "5":
-        this.speed = 100;
+        this.speed = 50;
         b = 50;
         break;
     }
     btn.disabled = true;
     btn.innerHTML = "Processing...";
-    this.score = a+b;
+    this.score = a + b;
   },
+  display: function () {
+    ctx.font = "40px Trebuchet MS";
+    ctx.fillStyle = "#747474";
+    ctx.textBaseline = "top";
+    ctx.textAlign = "right";
+    let txt = 'Score: ' + this.currentScore;
+    ctx.fillText(txt, canvas.width, 0);
+  },
+  write: function(){
+    results.innerHTML = '<h2 class="display-4">Results:</h2>';
+    results.innerHTML += `<p>Player name: <b>${player.name}</b></p>`;
+    results.innerHTML += `<p>Current score: <b>${this.currentScore}</b></p>`;
+    results.innerHTML += `<p>Highest score: <b>${player.highestScore()}</b></p>`;
+  }
 };

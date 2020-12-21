@@ -3,9 +3,9 @@ let player = {
   scores: [],
   highestScore: function () {
     let highest = 0;
-    scores.forEach((value) => {
+    this.scores.forEach((value) => {
       if (value > highest) highest = value;
     });
-    return value;
+    return highest;
   },
 };
