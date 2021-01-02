@@ -1,6 +1,7 @@
 function Food() {
   (this.x = 0),
     (this.y = 0),
+    (this.sEffect = new Audio("sound/Eating.mp3")),
     (this.position = function () {
       this.x = (Math.floor(Math.random() * game.rows - 1) + 1) * game.scale;
       this.y = (Math.floor(Math.random() * game.columns - 1) + 1) * game.scale;
@@ -9,4 +10,7 @@ function Food() {
       ctx.fillStyle = "red";
       ctx.fillRect(this.x, this.y, game.scale, game.scale);
     });
+    this.sound = () => {
+      this.sEffect.play();
+    };
 }

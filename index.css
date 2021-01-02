@@ -1,3 +1,4 @@
+
 #NewGame{
     width: 100%;
 }
@@ -10,4 +11,11 @@
     width: 60%;
     margin: auto;
     margin-top: 40px;
+}
+header{
+    font-family: 'Orbitron', sans-serif;
+    font-style:italic;
+}
+footer{
+    padding: 19px;
 }

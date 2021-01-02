@@ -49,6 +49,7 @@ let game = {
         this.currentScore += this.score;
         snake.count++;
         food.position();
+        food.sound();
       }
     }, this.speed);
   },
